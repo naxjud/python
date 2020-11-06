@@ -71,3 +71,22 @@ else:
     print("It's a lovely day")
 
 print("Enjoy your day")
+
+
+#dictionaries
+customer = {
+    "name": "john Smith",
+    "age": 18,
+    "is_verified": True
+}
+
+print(customer.get("name"))
+print(customer["age"])
+
+
+def greet_user(first_name, last_name):
+    print(f'Hi {first_name}, {last_name}')
+    print("i wish you a nice day")
+
+
+greet_user("john", last_name="Smith")
