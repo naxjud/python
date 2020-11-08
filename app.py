@@ -1,4 +1,5 @@
 import math
+
 """name = input("what's your name ")
 color = input("favourite color? ")
 print("hi "+name+" your favourite color is "+color)
@@ -31,7 +32,7 @@ name = "Moussa"
 last = "Zraidi"
 message = f'{name} [{last}] is a coder'
 print(message)
-#message length with len
+# message length with len
 print(len(message))
 print(message.upper())
 print(message.lower())
@@ -72,8 +73,7 @@ else:
 
 print("Enjoy your day")
 
-
-#dictionaries
+# dictionaries
 customer = {
     "name": "john Smith",
     "age": 18,
@@ -90,3 +90,37 @@ def greet_user(first_name, last_name):
 
 
 greet_user("john", last_name="Smith")
+
+
+class Point:
+    def __init__(self, x_cord, y_cord):
+        self.x = x_cord
+        self.y = y_cord
+
+    def move(self):
+        print("move")
+
+    def draw(self):
+        print(f' x= {self.x}, y={self.y}')
+
+
+point1 = Point(50, 20)
+point1.draw()
+print(point1.x)
+
+#dry don't repeat yourself
+
+#inheritance
+
+
+class Mammal:
+    def walk(self):
+        print("walk")
+
+
+class Dog(Mammal):
+    pass
+
+
+class Cat(Mammal):
+    pass
