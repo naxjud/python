@@ -1,8 +1,8 @@
 print('TIC-TAC-TOE')
 
 zeichen = {
-    0:"0",
-    1:"x"
+    0:"0|",
+    1:"x|"
 }
 
 spieler = {
@@ -22,15 +22,16 @@ feld = "_|"
 gespielt = {
 }
 
-gewinner_felder = {
-    123,
-    456,
-    789,
-    159,
-    357,
-    369,
-    147
-}
+gewinn_felder = [
+    "123",
+    "456",
+    "789",
+    "159",
+    "357",
+    "369",
+    "147",
+    "258"
+]
 
 def clear_gespielt(gespielt):
     zaehler=0
@@ -60,6 +61,27 @@ def nochplatz(gespielt):
     return False
 
 
+def gewonnen(gespielt):
+    x_s = []
+    o_s = []
+    for items in gewinn_felder:
+        zaehler1 = 0
+        zaehler2 = 0
+        for position in items:
+            p = int(position)
+            if gespielt[p] == zeichen[0]:
+                zaehler1 += 1
+            if gespielt[p] == zeichen[1]:
+                zaehler2 += 1
+
+        if zaehler1 == 3 or zaehler2 == 3:
+            return True
+
+    return False
+
+
+
+
 # solange das spiel nicht beendet wird
 while True:
     clear_gespielt(gespielt)
@@ -84,9 +106,14 @@ while True:
                 print("dieses Feld wurde schon gespielt")
                 zug = int(input(f"Dein Zug:{spieler[zaehler%2]}: "))
             else:
-                gespielt[zug] = zeichen[zaehler%2] +"|"
+                gespielt[zug] = zeichen[zaehler%2]
                 zaehler += 1
                 eingabe_falsch = False
+
+        if gewonnen(gespielt):
+            zeichne_feld(gespielt)
+            print(f'{spieler[(zaehler-1)%2]} hat gewonnen!!!')
+            break
 
     zeichne_feld(gespielt)
     spiel_neustarten = input("wieder spielen? (j)a (n)ein: ")
