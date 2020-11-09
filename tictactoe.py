@@ -1,3 +1,7 @@
+"""
+    Programm: Tic Tac Toe
+
+"""
 print('TIC-TAC-TOE')
 
 zeichen = {
@@ -33,6 +37,7 @@ gewinn_felder = [
     "258"
 ]
 
+
 def clear_gespielt(gespielt):
     zaehler=0
     for i in range(3):
@@ -52,6 +57,7 @@ def zeichne_feld(gespielt):
             else:
                 reihe += gespielt[zaehler]
         print(reihe)
+
 
 def nochplatz(gespielt):
     for sf in gespielt:
@@ -80,7 +86,8 @@ def gewonnen(gespielt):
     return False
 
 
-
+def clear():
+    print(" \n" * 10)
 
 # solange das spiel nicht beendet wird
 while True:
@@ -100,11 +107,21 @@ while True:
         eingabe_falsch = True
 
         while eingabe_falsch:
-            # spieler_1_zug nehmen
-            zug = int(input(f"Dein Zug {spieler[zaehler%2]}: "))
+            # spieler_zug nehmen
+            zug = ""
+
+            try:
+                zug = int(input(f"Dein Zug {spieler[zaehler%2]}: "))
+            except:
+                print("fehlerhafte Eingabe. Es dürfen nur Zahlen zwischen 1 und 9 sein.")
+                continue
+
             if gespielt[zug] != "":
                 print("dieses Feld wurde schon gespielt")
                 zug = int(input(f"Dein Zug:{spieler[zaehler%2]}: "))
+            elif zug > 9 or zug < 1:
+                print("Das Feld muss zwischen 1 und 9 sein")
+                zug = int(input(f"Dein Zug:{spieler[zaehler % 2]}: "))
             else:
                 gespielt[zug] = zeichen[zaehler%2]
                 zaehler += 1
@@ -114,10 +131,14 @@ while True:
             zeichne_feld(gespielt)
             print(f'{spieler[(zaehler-1)%2]} hat gewonnen!!!')
             break
+    else:
+      print("keiner hat gewonnen!")
 
-    zeichne_feld(gespielt)
+    # zeichne_feld(gespielt)
     spiel_neustarten = input("wieder spielen? (j)a (n)ein: ")
     if spiel_neustarten == 'n':
         break
+
+    clear()
 
 print("Spiel beendet. Bis zum nächsten mal")
