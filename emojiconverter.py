@@ -7,7 +7,9 @@ def emojiNator(message):
 
     emojis = {
         ":)": "😊",
-        ":(": "☹"
+        ":(": "☹",
+        ":|": "😐",
+        ";)": "😉"
     }
     output = ""
     for word in words:

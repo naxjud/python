@@ -2,7 +2,14 @@
     Programm: Tic Tac Toe
 
 """
-print('TIC-TAC-TOE')
+from os import system
+print("""
+
+    +++++++++++++++++++
+    +   TIC TAC TOE   +
+    +++++++++++++++++++
+
+""")
 
 zeichen = {
     0:"0|",
@@ -91,18 +98,20 @@ def clear():
 
 # solange das spiel nicht beendet wird
 while True:
+    system('clear')
     clear_gespielt(gespielt)
     # zeichne_feld(gespielt)
     # Namen der Spieler fragen
     spieler[1] = input("Spieler 1: ")
     spieler[0] = input("Spieler 2: ")
-    print(f"Salam {spieler[1]} und {spieler[0]}")
+    system('clear')
 
     zaehler = 1
 
     # solange es leere felder gibt oder das spiel nicht gewonnen wurde
     while nochplatz(gespielt):
         # Zeichne das aktuelle Spielfeld
+        print(f"Salam {spieler[1]} und {spieler[0]}\n")
         zeichne_feld(gespielt)
         eingabe_falsch = True
 
@@ -111,34 +120,38 @@ while True:
             zug = ""
 
             try:
-                zug = int(input(f"Dein Zug {spieler[zaehler%2]}: "))
+                zug = int(input(f"\nDein Zug {spieler[zaehler%2]}: "))
             except:
-                print("fehlerhafte Eingabe. Es dürfen nur Zahlen zwischen 1 und 9 sein.")
+                print("fehlerhafte Eingabe. Es duerfen nur Zahlen zwischen 1 und 9 sein.")
                 continue
 
-            if gespielt[zug] != "":
+            if zug > 9 or zug < 1:
+                print("\nHey! Das Feld muss zwischen 1 und 9 sein!")
+                zug = int(input(f"\nDein Zug {spieler[zaehler % 2]}: "))
+            elif gespielt[zug] != "":
                 print("dieses Feld wurde schon gespielt")
-                zug = int(input(f"Dein Zug:{spieler[zaehler%2]}: "))
-            elif zug > 9 or zug < 1:
-                print("Das Feld muss zwischen 1 und 9 sein")
-                zug = int(input(f"Dein Zug:{spieler[zaehler % 2]}: "))
+                zug = int(input(f"\nDein Zug {spieler[zaehler%2]}: "))
             else:
                 gespielt[zug] = zeichen[zaehler%2]
                 zaehler += 1
                 eingabe_falsch = False
+                system('clear')
 
         if gewonnen(gespielt):
+            print("\n\n\n")
             zeichne_feld(gespielt)
-            print(f'{spieler[(zaehler-1)%2]} hat gewonnen!!!')
+            system('clear')
+            print(f'\n\n\n+++ {spieler[(zaehler-1)%2]} hat gewonnen!!! +++\n\n\n')
             break
     else:
-      print("keiner hat gewonnen!")
+      print("keiner hat gewonnen!\n\n\n")
 
     # zeichne_feld(gespielt)
     spiel_neustarten = input("wieder spielen? (j)a (n)ein: ")
+
     if spiel_neustarten == 'n':
         break
 
-    clear()
+    system('clear')
 
-print("Spiel beendet. Bis zum nächsten mal")
+print("\n\n ++++ Spiel beendet.\n ++++ Bis zum naechsten mal")
