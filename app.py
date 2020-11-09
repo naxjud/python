@@ -124,3 +124,88 @@ class Dog(Mammal):
 
 class Cat(Mammal):
     pass
+
+"""
+print("Hello Moussa")
+print('o-----')
+print('  ||||')
+print('*'*10)
+"""
+
+name = "prince"
+age = 20
+is_patient = False
+
+name = 'What ist your name? '
+
+
+print(name)
+print(age)
+print(type(is_patient))
+
+for item in range(5, 10, 2):
+    print(item)
+
+prices = [10, 20, 30]
+total = 0
+for price in prices:
+    total += price
+
+print(f"Total price: {total}")
+
+for x in range(4):
+    for y in range(3):
+        print(f'({x},{y})')
+
+# 2D lists
+matrix = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+for row in matrix:
+    for item in row:
+        print(item)
+
+
+#list methods
+numbers = [5,3,8,5,54]
+numbers2 = numbers.copy()
+numbers.append(12)
+numbers.insert(0, 10)
+numbers.remove(54)
+# leer machen
+# numbers.clear()
+numbers.pop()
+index = numbers.index(5)
+print(numbers)
+print(index)
+print(50 in numbers)
+print(numbers.count(5))
+
+numbers.sort()
+numbers.reverse()
+print(numbers)
+
+# tupples array not editable
+my_tupple = (55, 32, 44)
+print(my_tupple[0])
+
+
+# unpacking
+x, y, z = my_tupple
+print(x)
+print(y)
+print(z)
+
+#dictionary
+customer = {
+    "name": "John smith",
+    "age": 30,
+    "is_verified": True,
+    "birthdate": "10 June 2009"
+}
+
+print(customer["name"])
+print(customer.get("birthdate","01 Januar 1980"))
